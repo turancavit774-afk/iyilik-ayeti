@@ -6,93 +6,173 @@
 <title>İyiliğin Geleceği Kulübü</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; font-family: 'Roboto', sans-serif; }
-  body { background: #fef9f4; color: #333; display:flex; flex-direction:column; min-height:100vh;}
-  header { background: #4caf50; color:white; padding: 20px; text-align:center; position:relative;}
-  header img { position:absolute; right:20px; top:15px; width:50px; height:auto; }
-  header h1 { font-size:1.8rem; }
-  nav { display:flex; justify-content:center; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-  nav button { flex:1; padding:15px; background:none; border:none; cursor:pointer; font-weight:600; color:#4caf50; transition:0.3s; font-size:1rem;}
-  nav button:hover, nav button.active { background:#4caf50; color:white; }
-  main { flex:1; display:flex; justify-content:center; align-items:center; padding:20px; text-align:center; }
-  .content { background:white; padding:25px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); max-width:600px; width:100%; }
-  .content p { font-size:1.2rem; line-height:1.6; margin-bottom:15px; }
-  .content span { font-weight:bold; color:#4caf50; }
-  footer { padding:15px; text-align:center; background:#f1f1f1; }
-  footer a { text-decoration:none; background:#25D366; color:white; padding:10px 20px; border-radius:8px; font-weight:600; transition:0.3s; display:inline-block; }
-  footer a:hover { background:#1ebe5d; }
-  @media(max-width:600px){ header h1{font-size:1.5rem;} nav button{font-size:0.9rem; padding:12px;} .content p{font-size:1rem;} }
+  /* Genel stil ve pastel/ toprak renkleri */
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f3ece0;
+    color: #3e3a36;
+  }
+
+  header {
+    background: #c8b8a3;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    background: #d6c4b5;
+    flex-wrap: wrap;
+  }
+
+  nav button {
+    background: #f3e7d2;
+    border: none;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  nav button:hover {
+    background: #c8b8a3;
+    color: #fff;
+  }
+
+  main {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .ayat-box {
+    background: #fff7ed;
+    border-left: 5px solid #c8b8a3;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  .ayat-box.fade {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .placeholder {
+    font-style: italic;
+    color: #7a7065;
+  }
+
+  .footer {
+    text-align: center;
+    margin: 40px 0 20px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  .whatsapp-link {
+    display: inline-block;
+    background: #25d366;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: 0.3s;
+  }
+
+  .whatsapp-link:hover {
+    background: #1ebe57;
+  }
+
+  @media(max-width: 500px) {
+    nav button {
+      flex: 1 1 45%;
+      margin: 5px 5px;
+    }
+
+    .ayat-box {
+      font-size: 1rem;
+    }
+  }
 </style>
 </head>
 <body>
-
-<header>
-  <h1>İyiliğin Geleceği Kulübü</h1>
-  <img src="https://ihh.org.tr/wp-content/uploads/2021/03/logo.png" alt="IHH Genç Logo">
-</header>
-
+<header>İyiliğin Geleceği Kulübü</header>
 <nav>
-  <button class="active" data-category="rastgele">Günün Ayeti</button>
-  <button data-category="hadis">Hadis</button>
-  <button data-category="cami">Camisi</button>
-  <button data-category="sahabe">Sahabe</button>
+  <button onclick="showCategory('ayeti')">Günün Ayeti</button>
+  <button onclick="showCategory('hadis')">Günün Hadisi</button>
+  <button onclick="showCategory('camiisi')">Camiisi</button>
+  <button onclick="showCategory('sahabesi')">Sahabesi</button>
+  <button onclick="showCategory('ihh')">İHH Genç</button>
 </nav>
-
 <main>
-  <div class="content">
-    <p id="text">Yükleniyor...</p>
-    <span id="reference"></span>
+  <div class="ayat-box" id="content">Yükleniyor...</div>
+  <div style="text-align:center;">
+    <a href="https://chat.whatsapp.com/CTnxGJEI3pV4Xz1tjzkehQ?mode=gi_t" target="_blank" class="whatsapp-link">WhatsApp Grubuna Katıl</a>
   </div>
 </main>
-
-<footer>
-  <a href="https://chat.whatsapp.com/CTnxGJEI3pV4Xz1tjzkehQ?mode=gi_t" target="_blank">WhatsApp Grubuna Katıl</a>
-</footer>
+<div class="footer">© İyiliğin Geleceği Kulübü | İHH Genç</div>
 
 <script>
-const apiUrl = "https://api.npoint.io/1cd52bb7c3d023ff1d5c"; // npoint API
-const textEl = document.getElementById("text");
-const refEl = document.getElementById("reference");
-const buttons = document.querySelectorAll("nav button");
+const apiUrl = 'https://api.npoint.io/1cd52bb7c3d023ff1d5c';
 
-let data = [];
+let ayetData = [];
 
-async function fetchData() {
+async function fetchAyets() {
   try {
-    const res = await fetch(apiUrl);
-    data = await res.json();
-    showRandom("rastgele");
-  } catch(err) {
-    textEl.textContent = "İçerik yüklenemedi. Lütfen daha sonra tekrar deneyin.";
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    ayetData = data;
+    showRandomAyet();
+  } catch (error) {
+    document.getElementById('content').innerText = 'Ayetler yüklenemedi.';
+    console.error(error);
   }
 }
 
-function showRandom(category) {
-  let filtered = data;
-  if(category !== "rastgele") {
-    filtered = data.filter(item => item.kategori === category);
-  }
-  const randomItem = filtered[Math.floor(Math.random() * filtered.length)];
-  if(randomItem){
-    textEl.textContent = randomItem.text;
-    refEl.textContent = randomItem.reference || "";
-  } else {
-    textEl.textContent = "Bu kategori için içerik bulunamadı.";
-    refEl.textContent = "";
-  }
+function showRandomAyet() {
+  if (!ayetData.length) return;
+  const index = Math.floor(Math.random() * ayetData.length);
+  const box = document.getElementById('content');
+  box.classList.add('fade');
+  setTimeout(() => {
+    box.innerHTML = ayetData[index].text || 'Ayet bulunamadı.';
+    box.classList.remove('fade');
+  }, 500);
 }
 
-// Menü butonları
-buttons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    buttons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    showRandom(btn.dataset.category);
-  });
-});
+function showCategory(category) {
+  const box = document.getElementById('content');
+  box.classList.add('fade');
+  setTimeout(() => {
+    if (category === 'ayeti') {
+      showRandomAyet();
+    } else {
+      box.innerHTML = '<span class="placeholder">Bu kategori için içerik bulunamadı.</span>';
+    }
+    box.classList.remove('fade');
+  }, 500);
+}
 
-fetchData();
+window.onload = fetchAyets;
 </script>
-
 </body>
 </html>
