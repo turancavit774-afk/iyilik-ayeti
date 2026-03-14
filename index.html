@@ -1,183 +1,186 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>İyilik Ayeti</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ÇÜ İyiliğin Geleceği Kulübü - Ayetler</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Genel ayarlar */
+    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif;}
+    body {
+      background: linear-gradient(to bottom, #f0f4f8, #cce0ff);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      text-align: center;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    /* Başlık */
+    header {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333;
+    }
 
-<style>
+    /* Ayet kutusu */
+    #ayet-box {
+      background: #ffffffcc;
+      padding: 25px 20px;
+      border-radius: 15px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transition: all 0.5s ease;
+      margin-bottom: 20px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-body{
-margin:0;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-font-family:'Poppins',sans-serif;
-background: radial-gradient(circle at top,#1f4037,#0f2027);
-color:white;
-overflow:hidden;
-}
+    #ayet-box p {
+      font-size: 1.1rem;
+      color: #222;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
 
-.bgPattern{
-position:absolute;
-width:200%;
-height:200%;
-background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
-background-size:40px 40px;
-animation:moveBg 60s linear infinite;
-}
+    #ayet-box span {
+      font-size: 0.95rem;
+      color: #555;
+      font-style: italic;
+    }
 
-@keyframes moveBg{
-0%{transform:translate(0,0)}
-100%{transform:translate(-200px,-200px)}
-}
+    /* Yeni Ayet butonu */
+    #new-ayet {
+      background: #4a90e2;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 15px;
+    }
 
-.card{
+    #new-ayet:hover {
+      background: #357ABD;
+      transform: translateY(-3px);
+    }
 
-position:relative;
-max-width:700px;
-padding:50px 40px;
-border-radius:24px;
+    /* QR ve paylaşım alanı */
+    #share-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
 
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(14px);
+    #qr-code img {
+      width: 120px;
+      height: 120px;
+    }
 
-box-shadow:0 15px 60px rgba(0,0,0,0.5);
+    #whatsapp a {
+      text-decoration: none;
+      background: #25D366;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
 
-text-align:center;
+    #whatsapp a:hover {
+      background: #1ebe5d;
+    }
 
-}
+    /* Footer */
+    footer {
+      font-size: 0.85rem;
+      color: #333;
+      margin-top: 15px;
+    }
 
-.title{
+    /* Logo */
+    #logo {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.8rem;
+      color: #555;
+    }
 
-font-size:28px;
-letter-spacing:2px;
-margin-bottom:30px;
-
-}
-
-.ayet{
-
-font-family:'Amiri',serif;
-font-size:26px;
-line-height:1.9;
-opacity:0;
-transform:translateY(10px);
-transition:0.5s;
-
-}
-
-.ayet.show{
-
-opacity:1;
-transform:translateY(0);
-
-}
-
-.source{
-
-margin-top:20px;
-font-size:16px;
-opacity:0.8;
-
-}
-
-button{
-
-margin-top:35px;
-padding:12px 28px;
-border:none;
-border-radius:40px;
-
-background:linear-gradient(45deg,#ffd369,#ffb347);
-
-color:#333;
-font-weight:600;
-cursor:pointer;
-
-transition:0.3s;
-
-}
-
-button:hover{
-
-transform:scale(1.07);
-
-}
-
-.footer{
-
-margin-top:40px;
-font-size:13px;
-opacity:0.6;
-line-height:1.6;
-
-}
-
-</style>
+    @media(max-width: 600px){
+      #ayet-box p {font-size: 1rem;}
+      #new-ayet {width: 80%;}
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="bgPattern"></div>
+  <header>ÇÜ İyiliğin Geleceği Kulübü</header>
 
-<div class="card">
+  <div id="ayet-box">
+    <p id="ayet">Yükleniyor...</p>
+    <span id="sure">...</span>
+  </div>
 
-<div class="title">📖 İyilik Ayeti</div>
+  <button id="new-ayet">Yeni Ayet</button>
 
-<div id="ayet" class="ayet">Yükleniyor...</div>
+  <div id="share-area">
+    <div id="qr-code">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://iyiligin-gelecegi.github.io/iyilik-ayeti/ayet.html" alt="QR Kod">
+    </div>
+    <div id="whatsapp">
+      <a href="https://chat.whatsapp.com/YourGroupLinkHere" target="_blank">WhatsApp Grubumuz</a>
+    </div>
+  </div>
 
-<div id="kaynak" class="source"></div>
+  <footer>© 2026 ÇÜ İyiliğin Geleceği Kulübü | İHH Genç</footer>
+  <div id="logo">İHH Genç</div>
 
-<button onclick="randomAyet()">Başka Ayet</button>
+  <script>
+    // Ayetleri JSON dosyandan veya nPoint linkinden çekebilirsin
+    const ayetler = [
+      {"ayet":"Siz insanlara iyilik yapmayı emredip kendinizi unutuyor musunuz? Halbuki ilâhî kitabı da okuyup duruyorsunuz. Hiç aklınızı çalıştırmıyor musunuz?","sure":"Bakara / 44"},
+      {"ayet":"Bir zamanlar size: 'Şu şehre girin de oradaki nimetlerden istediğiniz gibi bol bol yeyin; şehrin kapısından eğilerek girin ve «Hıtta: bizi affet!» deyin ki hatalarınızı bağışlayalım. Biz, iyilik yapanların mükâfatını fazlasıyla vereceğiz' demiştik.","sure":"Bakara / 58"},
+      {"ayet":"Hani biz, İsrâiloğulları’ndan: 'Sadece Allah’a kulluk edeceksiniz, ana-babaya, akrabaya, yetimlere, yoksullara iyilikte bulunacaksınız!' diye söz almış ve: 'İnsanlara güzel söz söyleyin, namazı hakkıyla kılın, zekâtı verin!' diye emretmiştik.","sure":"Bakara / 83"}
+      // Diğer ayetleri buraya ekle veya JSON linkinden çek
+    ];
 
-<div class="footer">
-ÇÜ İyiliğin Geleceği Kulübü <br>
-İHH Genç
-</div>
+    const ayetText = document.getElementById("ayet");
+    const ayetSure = document.getElementById("sure");
+    const newButton = document.getElementById("new-ayet");
 
-</div>
+    function rastgeleAyet(){
+      const random = Math.floor(Math.random() * ayetler.length);
+      const ayet = ayetler[random];
+      // fade efekti
+      ayetText.style.opacity = 0;
+      ayetSure.style.opacity = 0;
+      setTimeout(()=>{
+        ayetText.innerText = ayet.ayet;
+        ayetSure.innerText = ayet.sure;
+        ayetText.style.opacity = 1;
+        ayetSure.style.opacity = 1;
+      }, 300);
+    }
 
-<script>
+    newButton.addEventListener("click", rastgeleAyet);
 
-let ayetler=[]
-
-async function load(){
-
-const res=await fetch("https://api.npoint.io/1cd52bb7c3d023ff1d5c")
-
-const data=await res.json()
-
-ayetler=data.list
-
-randomAyet()
-
-}
-
-function randomAyet(){
-
-const random=ayetler[Math.floor(Math.random()*ayetler.length)]
-
-const ayet=document.getElementById("ayet")
-
-ayet.classList.remove("show")
-
-setTimeout(()=>{
-
-ayet.innerText=random.text
-document.getElementById("kaynak").innerText=random.source
-
-ayet.classList.add("show")
-
-},200)
-
-}
-
-load()
-
-</script>
-
+    // Sayfa yüklenince rastgele ayet
+    window.onload = rastgeleAyet;
+  </script>
 </body>
 </html>
