@@ -40,14 +40,47 @@
         .logo-area { text-align: center; padding: 20px 0 10px; }
         .logo-area img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; background: white; }
 
-        /* Adana Ezan Vakitleri */
-        .vakit-bar { 
-            background: rgba(0,0,0,0.2); 
-            display: grid; grid-template-columns: repeat(5, 1fr); 
-            text-align: center; font-size: 0.65rem; padding: 12px; margin: 10px 15px; border-radius: 15px;
-        }
-        .vakit-item b { display: block; color: var(--whatsapp); font-size: 0.85rem; margin-top: 2px; }
+       /* Adana Ezan Vakitleri */
+.vakit-bar { 
+    background: rgba(0,0,0,0.2); 
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr); 
+    text-align: center; 
+    font-size: 0.65rem; 
+    padding: 12px; 
+    margin: 10px 15px; 
+    border-radius: 15px;
+}
 
+.vakit-item b { 
+    display: block; 
+    color: var(--whatsapp); 
+    font-size: 0.85rem; 
+    margin-top: 2px; 
+}
+
+/* Saat ve Geri Sayım Alanı */
+.saat-alani {
+    text-align: center;
+    margin: 20px 15px 5px 15px;
+    background: rgba(0,0,0,0.2); 
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#canli-saat {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    display: block;
+}
+
+#kalan-sure {
+    font-size: 0.9rem;
+    color: var(--whatsapp);
+    font-weight: bold;
+    margin-top: 5px;
+}
         /* İçerik Alanı */
         .content { padding: 20px 30px; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; }
         #kat-etiket { color: var(--whatsapp); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 12px; text-transform: uppercase; }
