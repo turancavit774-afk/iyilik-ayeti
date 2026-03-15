@@ -2,8 +2,8 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>İlim Köşesi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>İlim Köşesi | Adana</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -14,43 +14,50 @@
 --dim:#adb5bd;
 --whatsapp:#25d366;
 }
-*{box-sizing:border-box;margin:0;padding:0;}
+*{box-sizing:border-box;}
 body{
+margin:0;
 font-family:Poppins, sans-serif;
 background:var(--bg);
-color:var(--text);
+color:white;
 display:flex;
 justify-content:center;
+min-height: 100vh;
 }
 .app{
 width:100%;
 max-width:500px;
-padding:20px 10px 10px 10px;
-display:flex;
-flex-direction:column;
-min-height:100vh;
+padding:15px;
 }
 .top-bar{
 text-align:center;
-margin-bottom:10px;
+padding:15px 0;
 }
 .top-bar img{
-width:85px;
-height:85px;
+width:90px;
+height:90px;
 border-radius:50%;
+border: 2px solid var(--green);
+background: #fff;
+padding: 2px;
 }
 .timer{
 text-align:center;
 margin-top:10px;
+background: rgba(255,255,255,0.03);
+padding: 15px;
+border-radius: 20px;
 }
 #countdown{
-font-size:2.5rem;
+font-size:2.8rem;
 color:var(--whatsapp);
 font-weight:600;
+font-variant-numeric: tabular-nums;
 }
 #next-vakit-name{
 font-size:0.85rem;
 color:var(--dim);
+letter-spacing: 1px;
 }
 .vakit-bar{
 display:grid;
@@ -58,111 +65,114 @@ grid-template-columns:repeat(5,1fr);
 text-align:center;
 font-size:0.75rem;
 padding:15px 5px;
-margin:10px 0;
+background: rgba(0,0,0,0.2);
+margin: 15px 0;
+border-radius: 15px;
 }
 .vakit-item b{
 display:block;
-font-size:0.9rem;
+font-size:0.95rem;
+margin-top:4px;
+color: var(--dim);
 }
 .active-vakit b{
 color:var(--whatsapp);
-}
-.content{
-text-align:center;
-padding:15px;
-flex-grow:1;
-}
-#kat-etiket{
-color:var(--whatsapp);
-font-weight:600;
-margin-bottom:8px;
-}
-#ana-metin{
-font-family:Amiri, serif;
-font-size:1.8rem;
-line-height:1.7;
-}
-#kaynak{
-margin-top:10px;
-color:var(--dim);
+font-weight: bold;
 }
 .nav-tabs{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:10px;
+gap:12px;
 margin-top:10px;
-margin-bottom:10px;
 }
 .nav-btn{
 background:#1c2126;
-border:none;
+border:1px solid rgba(255,255,255,0.05);
 padding:16px;
 border-radius:14px;
 color:white;
 font-weight:600;
 font-size:0.95rem;
 cursor:pointer;
+transition: 0.3s;
 }
 .nav-btn.active{
 background:linear-gradient(135deg,#1b4332,#2d6a4f);
+border: none;
+}
+.content{
+text-align:center;
+padding:20px 10px;
+min-height: 280px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+#kat-etiket{
+color:var(--whatsapp);
+font-weight:600;
+margin-bottom:10px;
+font-size: 0.9rem;
+letter-spacing: 1px;
+}
+#ana-metin{
+font-family:Amiri, serif;
+font-size:1.8rem;
+line-height:1.6;
+margin: 0;
+}
+#kaynak{
+margin-top:12px;
+color:var(--dim);
+font-size: 0.95rem;
 }
 .refresh-btn{
 background:var(--green);
 border:none;
-padding:12px 28px;
+padding:12px 35px;
 border-radius:30px;
 color:white;
 font-weight:600;
-margin-top:10px;
+margin-top:20px;
 cursor:pointer;
-font-size:0.95rem;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+align-self: center;
 }
 .whatsapp-bar{
 background:var(--whatsapp);
-text-align:center;
-padding:18px;
-font-size:1.1rem;
-font-weight:600;
-margin-top:10px;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
+margin-top:20px;
+border-radius:15px;
+box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+transition: 0.3s;
 }
+.whatsapp-bar:active { transform: scale(0.98); }
 .whatsapp-bar a{
 color:white;
 text-decoration:none;
 display:flex;
-align-items:center;
-gap:8px;
+align-items: center;
+justify-content: center;
+gap: 12px;
+padding: 18px;
+font-size: 1.1rem;
+font-weight: 600;
 }
-.whatsapp-bar img{
-width:24px;
-height:24px;
-}
-.alt-metin{
-text-align:center;
-color:var(--dim);
-margin-top:8px;
-font-size:0.85rem;
-}
+/* WhatsApp Logo SVG */
+.wa-icon { width: 24px; height: 24px; fill: white; }
 </style>
 </head>
 <body>
 <div class="app">
 
-<!-- Kulüp logosu -->
 <div class="top-bar">
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5kDqyb7ISRa7uW-xKuMKc0YuEadhUjs7p2Q&s" alt="Logo">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5kDqyb7ISRa7uW-xKuMKc0YuEadhUjs7p2Q&s">
 </div>
 
-<!-- Geri sayım -->
 <div class="timer">
 <div id="next-vakit-name">VAKTE KALAN</div>
 <div id="countdown">00:00:00</div>
 </div>
 
-<!-- Vakit çubuğu -->
 <div class="vakit-bar">
 <div class="vakit-item" id="i-Fajr">İmsak<b id="v-imsak">--:--</b></div>
 <div class="vakit-item" id="i-Dhuhr">Öğle<b id="v-ogle">--:--</b></div>
@@ -171,13 +181,11 @@ font-size:0.85rem;
 <div class="vakit-item" id="i-Isha">Yatsı<b id="v-yatsi">--:--</b></div>
 </div>
 
-<!-- Günün ayeti -->
 <div class="content">
 <div id="kat-etiket">Günün Ayeti</div>
 <p id="ana-metin">Yükleniyor...</p>
 <div id="kaynak"></div>
 
-<!-- Kategoriler günün ayeti altında 2x2 -->
 <div class="nav-tabs">
 <button class="nav-btn active" onclick="tabDegistir('ayetler',this)">Ayet</button>
 <button class="nav-btn" onclick="tabDegistir('hadisler',this)">Hadis</button>
@@ -185,21 +193,21 @@ font-size:0.85rem;
 <button class="nav-btn" onclick="tabDegistir('dualar',this)">Dua</button>
 </div>
 
-<!-- Değiştir butonu -->
 <button class="refresh-btn" onclick="rastgeleGetir(aktifKategori)">
 Değiştir
 </button>
 </div>
 
-<!-- WhatsApp -->
 <div class="whatsapp-bar">
 <a href="https://chat.whatsapp.com/EqjGZOCxmr9IgJHyK5zjul?mode=gi_t" target="_blank">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+<svg class="wa-icon" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.63 1.432h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+</svg>
 Hadi iyiliği yayalım!
 </a>
 </div>
 
-<div class="alt-metin">Günlük iyilikleri kaçırma! 🌿</div>
+</div>
 
 <script>
 let vakitler={}
@@ -212,19 +220,19 @@ sahabeler:"Günün Sahabesi",
 dualar:"Günün Duası"
 }
 
-// Vakit çekme
+// Vakit çekme (Adana Diyanet Metodu)
 async function vakitCek(){
-const d=new Date()
-const date=d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear()
-const res=await fetch(`https://api.aladhan.com/v1/timingsByCity?city=Adana&country=Turkey&method=13&date=${date}`)
-const data=await res.json()
-vakitler=data.data.timings
-document.getElementById("v-imsak").innerText=vakitler.Fajr
-document.getElementById("v-ogle").innerText=vakitler.Dhuhr
-document.getElementById("v-ikindi").innerText=vakitler.Asr
-document.getElementById("v-aksam").innerText=vakitler.Maghrib
-document.getElementById("v-yatsi").innerText=vakitler.Isha
-setInterval(updateCountdown,1000)
+try {
+    const res=await fetch(`https://api.aladhan.com/v1/timingsByCity?city=Adana&country=Turkey&method=13`)
+    const data=await res.json()
+    vakitler=data.data.timings
+    document.getElementById("v-imsak").innerText=vakitler.Fajr
+    document.getElementById("v-ogle").innerText=vakitler.Dhuhr
+    document.getElementById("v-ikindi").innerText=vakitler.Asr
+    document.getElementById("v-aksam").innerText=vakitler.Maghrib
+    document.getElementById("v-yatsi").innerText=vakitler.Isha
+    setInterval(updateCountdown,1000)
+} catch(e) { console.log("Vakit hatası"); }
 }
 
 // Geri sayım
@@ -243,7 +251,6 @@ for(let v of vList){
 let vt=new Date()
 const[h,m]=v.t.split(":")
 vt.setHours(h,m,0)
-vt.setMinutes(vt.getMinutes()-2) // 2 dk fark düzeltme
 if(vt>now){next={v:v,z:vt};break;}
 }
 if(!next){
@@ -251,7 +258,6 @@ let vt=new Date()
 const[h,m]=vList[0].t.split(":")
 vt.setDate(vt.getDate()+1)
 vt.setHours(h,m,0)
-vt.setMinutes(vt.getMinutes()-2)
 next={v:vList[0],z:vt}
 }
 const diff=next.z-now
@@ -264,11 +270,13 @@ document.querySelectorAll(".vakit-item").forEach(el=>el.classList.remove("active
 document.getElementById(next.v.id).classList.add("active-vakit")
 }
 
-// Günlük içerik
+// Veri çekme
 async function verileriGetir(){
-const res=await fetch("https://api.npoint.io/94a7d4f2e4d98725a67c")
-veriler=await res.json()
-gunlukSabitGetir("ayetler")
+try {
+    const res=await fetch("https://api.npoint.io/94a7d4f2e4d98725a67c")
+    veriler=await res.json()
+    gunlukSabitGetir("ayetler")
+} catch(e) { document.getElementById("ana-metin").innerText="Veri yüklenemedi."; }
 }
 
 function tabDegistir(kat,el){
@@ -291,6 +299,7 @@ document.getElementById("kaynak").innerText=s.kaynak||s.isim||""
 
 function rastgeleGetir(kat){
 const l=veriler[kat]
+if(!l)return
 const r=Math.floor(Math.random()*l.length)
 const s=l[r]
 document.getElementById("ana-metin").innerText=s.metin||s.bilgi
