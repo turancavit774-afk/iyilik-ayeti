@@ -2,131 +2,112 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>İlim Köşesi | Adana</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0b0e11;
-            --card-bg: #15191d;
-            --primary: #1b4332; /* Koyu İslami Yeşil */
-            --accent: #2d6a4f;
-            --text-main: #e9ecef;
-            --text-dim: #adb5bd;
-            --whatsapp: #25d366;
+            --bg: #0b0e11; --card-bg: #15191d; --primary: #1b4332; 
+            --accent: #2d6a4f; --text-main: #e9ecef; --text-dim: #adb5bd; --whatsapp: #25d366;
         }
+        
+        * { box-sizing: border-box; }
 
         body { 
             font-family: 'Poppins', sans-serif; 
             background: var(--bg); 
-            color: var(--text-main);
-            margin: 0; padding: 15px; 
-            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 10px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; /* Mobilde üstten başlasın */
+            min-height: 100vh; 
         }
 
         .card { 
             background: var(--card-bg); 
-            width: 100%; max-width: 420px; 
-            border-radius: 25px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+            width: 100%; 
+            max-width: 480px; /* Biraz daha genişlettik */
+            border-radius: 30px; 
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6); 
             overflow: hidden; 
-            border: 1px solid rgba(255,255,255,0.05);
-            animation: fadeIn 0.8s ease-in-out;
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 20px;
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Kulüp Logosu Alanı */
-        .logo-area { text-align: center; padding: 20px 0 10px; }
-        .logo-area img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; background: white; }
-
-       /* Adana Ezan Vakitleri */
-.vakit-bar { 
-    background: rgba(0,0,0,0.2); 
-    display: grid; 
-    grid-template-columns: repeat(5, 1fr); 
-    text-align: center; 
-    font-size: 0.65rem; 
-    padding: 12px; 
-    margin: 10px 15px; 
-    border-radius: 15px;
-}
-
-.vakit-item b { 
-    display: block; 
-    color: var(--whatsapp); 
-    font-size: 0.85rem; 
-    margin-top: 2px; 
-}
-
-/* Saat ve Geri Sayım Alanı */
-.saat-alani {
-    text-align: center;
-    margin: 20px 15px 5px 15px;
-    background: rgba(0,0,0,0.2); 
-    padding: 15px;
-    border-radius: 15px;
-}
-
-#canli-saat {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: white;
-    display: block;
-}
-
-#kalan-sure {
-    font-size: 0.9rem;
-    color: var(--whatsapp);
-    font-weight: bold;
-    margin-top: 5px;
-}
-        /* İçerik Alanı */
-        .content { padding: 20px 30px; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; }
-        #kat-etiket { color: var(--whatsapp); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 12px; text-transform: uppercase; }
-        #ana-metin { font-family: 'Amiri', serif; font-size: 1.6rem; line-height: 1.6; margin: 0 0 15px 0; color: #fff; }
-        #kaynak { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
-
-        /* Butonlar */
-        .actions { display: flex; flex-direction: column; gap: 12px; align-items: center; padding-bottom: 25px; }
-        .btn { border: none; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; width: 70%; }
-        .refresh-btn { background: var(--primary); color: white; padding: 12px 0; }
-        .refresh-btn:active { transform: scale(0.95); }
-        .share-btn { background: transparent; border: 1px solid var(--accent); color: var(--text-main); padding: 8px 0; font-size: 0.8rem; }
+        .logo-area { text-align: center; padding: 25px 0 10px; }
+        .logo-area img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--primary); background: white; object-fit: contain; }
         
-        .wp-link { text-decoration: none; color: var(--whatsapp); font-size: 0.85rem; margin-top: 5px; font-weight: 600; border-bottom: 1px dashed var(--whatsapp); padding-bottom: 2px; }
+        .timer-box { text-align: center; margin: 15px 20px; padding: 20px; background: rgba(255,255,255,0.04); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        #countdown { font-size: 2.4rem; font-weight: 600; color: var(--whatsapp); font-variant-numeric: tabular-nums; letter-spacing: 2px; }
+        #next-vakit-name { font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        
+        .vakit-bar { background: rgba(0,0,0,0.3); display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-size: 0.75rem; padding: 15px 10px; margin: 15px 20px; border-radius: 18px; }
+        .vakit-item b { display: block; font-size: 0.95rem; margin-top: 5px; color: var(--text-dim); }
+        .active-vakit b { color: var(--whatsapp); font-weight: bold; }
+        .active-vakit { transform: scale(1.1); transition: 0.3s; }
 
-        /* Alt Menü */
-        .nav-tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: #1c2126; }
-        .nav-btn { padding: 18px 0; border: none; background: none; color: var(--text-dim); cursor: pointer; font-size: 0.75rem; font-weight: 600; transition: 0.2s; }
+        .iyilik-box { background: linear-gradient(135deg, #15191d, #1b4332); margin: 0 20px 20px; padding: 20px; border-radius: 22px; text-align: center; border: 1px solid rgba(37, 211, 102, 0.15); }
+        .iyilik-title { font-size: 0.75rem; color: var(--whatsapp); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; font-weight: 600; }
+        .iyilik-text { font-size: 1.1rem; color: #fff; line-height: 1.5; font-weight: 400; }
+        .iyilik-kaynak { font-size: 0.8rem; color: var(--text-dim); margin-top: 10px; font-style: italic; }
+
+        .content { padding: 20px 30px; text-align: center; min-height: 220px; display: flex; flex-direction: column; justify-content: center; background: rgba(0,0,0,0.1); }
+        #kat-etiket { color: var(--whatsapp); font-weight: 600; font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase; }
+        #ana-metin { font-family: 'Amiri', serif; font-size: 1.7rem; line-height: 1.6; color: #fff; margin: 0; }
+        #kaynak { font-size: 0.95rem; color: var(--text-dim); margin-top: 15px; }
+        
+        .community-invite { background: linear-gradient(135deg, #075e54, #128c7e); margin: 20px; padding: 25px 20px; border-radius: 25px; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .invite-btn { background: #25d366; color: white !important; text-decoration: none; padding: 14px 28px; border-radius: 50px; font-size: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; margin-top: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; }
+        .invite-btn:active { transform: scale(0.95); }
+
+        .nav-tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: #1c2126; border-top: 1px solid rgba(255,255,255,0.05); }
+        .nav-btn { padding: 22px 0; border: none; background: none; color: var(--text-dim); cursor: pointer; font-size: 0.85rem; font-weight: 600; }
         .nav-btn.active { color: white; background: var(--primary); box-shadow: inset 0 4px 0 var(--whatsapp); }
+
+        @keyframes shake { 0%, 80%, 100% { transform: rotate(0); } 85% { transform: rotate(3deg); } 95% { transform: rotate(-3deg); } }
+        .invite-btn { animation: shake 6s infinite; }
     </style>
 </head>
 <body>
 
 <div class="card">
     <div class="logo-area">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5kDqyb7ISRa7uW-xKuMKc0YuEadhUjs7p2Q&s" alt="Kulüp Logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5kDqyb7ISRa7uW-xKuMKc0YuEadhUjs7p2Q&s" alt="Logo">
+    </div>
+
+    <div class="timer-box">
+        <div id="next-vakit-name">VAKTE KALAN</div>
+        <div id="countdown">00:00:00</div>
     </div>
 
     <div class="vakit-bar">
-        <div class="vakit-item">İmsak<b id="v-imsak">--:--</b></div>
-        <div class="vakit-item">Öğle<b id="v-ogle">--:--</b></div>
-        <div class="vakit-item">İkindi<b id="v-ikindi">--:--</b></div>
-        <div class="vakit-item">Akşam<b id="v-aksam">--:--</b></div>
-        <div class="vakit-item">Yatsı<b id="v-yatsi">--:--</b></div>
+        <div class="vakit-item" id="i-Fajr">İmsak<b id="v-imsak">--:--</b></div>
+        <div class="vakit-item" id="i-Dhuhr">Öğle<b id="v-ogle">--:--</b></div>
+        <div class="vakit-item" id="i-Asr">İkindi<b id="v-ikindi">--:--</b></div>
+        <div class="vakit-item" id="i-Maghrib">Akşam<b id="v-aksam">--:--</b></div>
+        <div class="vakit-item" id="i-Isha">Yatsı<b id="v-yatsi">--:--</b></div>
+    </div>
+
+    <div class="iyilik-box">
+        <div class="iyilik-title">✨ Günün İyilik Görevi</div>
+        <div class="iyilik-text" id="iyilik-metin">Yükleniyor...</div>
+        <div class="iyilik-kaynak" id="iyilik-kaynak"></div>
     </div>
 
     <div class="content">
         <div id="kat-etiket">Günün Ayeti</div>
-        <p id="ana-metin">Yükleniyor...</p>
+        <p id="ana-metin">Veriler Hazırlanıyor...</p>
         <div id="kaynak"></div>
     </div>
 
-    <div class="actions">
-        <button class="btn refresh-btn" onclick="rastgeleGetir()">🔄 Değiştir</button>
-        <button class="btn share-btn" onclick="paylas()">📤 Paylaş</button>
-        <a href="https://chat.whatsapp.com/CTnxGJEI3pV4Xz1tjzkehQ" target="_blank" class="wp-link">💬 Kulüp Grubu'na Katıl</a>
+    <div class="community-invite">
+        <div style="font-size: 1rem; font-weight: 600; color: #fff;">🤝 Gönüllü Hareketi'ne Katıl</div>
+        <div style="font-size: 0.8rem; color: #e0e0e0; margin-top: 5px;">İHH Üniversite & İlim Köşesi Grubumuz</div>
+        <a href="https://chat.whatsapp.com/EqjGZOCxmr9IgJHyK5zjul?mode=gi_t" target="_blank" class="invite-btn">
+            WhatsApp Grubuna Katıl
+        </a>
     </div>
 
     <div class="nav-tabs">
@@ -139,76 +120,100 @@
 
 <script>
     let veriler = {};
-    let aktifKategori = 'ayetler';
+    let vakitler = {};
+    const iyilikHavuzu = [
+        { gorev: "Bugün karşılaştığın en az üç kişiye içtenlikle selam ver.", kaynak: "Hadis: 'Selamı aranızda yayınız.' (Müslim)" },
+        { gorev: "Mesciddeki bir düzensizliği (dağınık tespih vb.) düzelt.", kaynak: "Hadis: 'Temizlik imanın yarısıdır.' (Müslim)" },
+        { gorev: "Bir arkadaşına halini sor ve onu sadece dinle.", kaynak: "Hadis: 'Müslüman Müslümanın kardeşidir.' (Buhari)" },
+        { gorev: "Bugün sınıfının veya mescidin ışığını kapatarak israfı önle.", kaynak: "Ayet: 'İsraf etmeyin, Allah israf edenleri sevmez.' (Araf, 31)" },
+        { gorev: "Bugün birine sadece Allah rızası için gülümse.", kaynak: "Hadis: 'Mümin kardeşine tebessüm etmen sadakadır.' (Tirmizi)" }
+    ];
 
-    // Adana Ezan Vakitleri
     async function vakitCek() {
         try {
             const res = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Adana&country=Turkey&method=13');
             const data = await res.json();
-            const t = data.data.timings;
-            document.getElementById('v-imsak').innerText = t.Fajr;
-            document.getElementById('v-ogle').innerText = t.Dhuhr;
-            document.getElementById('v-ikindi').innerText = t.Asr;
-            document.getElementById('v-aksam').innerText = t.Maghrib;
-            document.getElementById('v-yatsi').innerText = t.Isha;
-        } catch (e) { console.log("Hata"); }
+            vakitler = data.data.timings;
+            
+            document.getElementById('v-imsak').innerText = vakitler.Fajr;
+            document.getElementById('v-ogle').innerText = vakitler.Dhuhr;
+            document.getElementById('v-ikindi').innerText = vakitler.Asr;
+            document.getElementById('v-aksam').innerText = vakitler.Maghrib;
+            document.getElementById('v-yatsi').innerText = vakitler.Isha;
+
+            setInterval(updateCountdown, 1000);
+        } catch (e) { console.log("Vakitler alınamadı."); }
     }
 
-// npoint Veri Çekme
-async function verileriGetir() {
-    try {
-        // URL'yi tırnak içine aldık ("...")
-        const res = await fetch("https://api.npoint.io/94a7d4f2e4d98725a67c");
+    function updateCountdown() {
+        if(!vakitler.Fajr) return;
+        const simdi = new Date();
+        const vList = [
+            {n:'İMSAK', t:vakitler.Fajr, id:'i-Fajr'},
+            {n:'ÖĞLE', t:vakitler.Dhuhr, id:'i-Dhuhr'},
+            {n:'İKİNDİ', t:vakitler.Asr, id:'i-Asr'},
+            {n:'AKŞAM', t:vakitler.Maghrib, id:'i-Maghrib'},
+            {n:'YATSI', t:vakitler.Isha, id:'i-Isha'}
+        ];
         
-        // Verinin gelip gelmediğini kontrol edelim
-        if (!res.ok) throw new Error("Veri çekilemedi");
-
-        veriler = await res.json();
-        rastgeleGetir();
-    } catch (e) { 
-        console.error("Hata:", e); // Hatayı konsolda görmek için
-        document.getElementById('ana-metin').innerText = "Veri yüklenirken bir hata oluştu. Lütfen npoint bağlantısını kontrol edin."; 
+        let siradaki = null;
+        for(let v of vList) {
+            let vt = new Date(); 
+            const [h,m] = v.t.split(':'); 
+            vt.setHours(h,m,0);
+            if(vt > simdi) { siradaki = {v:v, z:vt}; break; }
+        }
+        
+        if(!siradaki) { 
+            let vt=new Date(); 
+            const [h,m]=vList[0].t.split(':'); 
+            vt.setDate(vt.getDate()+1); 
+            vt.setHours(h,m,0); 
+            siradaki={v:vList[0], z:vt}; 
+        }
+        
+        const fark = siradaki.z - simdi;
+        const h = Math.floor(fark/3600000).toString().padStart(2,'0');
+        const m = Math.floor((fark%3600000)/60000).toString().padStart(2,'0');
+        const s = Math.floor((fark%60000)/1000).toString().padStart(2,'0');
+        
+        document.getElementById('countdown').innerText = `${h}:${m}:${s}`;
+        document.getElementById('next-vakit-name').innerText = siradaki.v.n + " VAKTİNE KALAN";
+        
+        document.querySelectorAll('.vakit-item').forEach(el => el.classList.remove('active-vakit'));
+        document.getElementById(siradaki.v.id).classList.add('active-vakit');
     }
-}
+
+    async function verileriGetir() {
+        try {
+            const res = await fetch("https://api.npoint.io/94a7d4f2e4d98725a67c");
+            veriler = await res.json();
+            rastgeleGetir('ayetler');
+            
+            const d = new Date(); 
+            const iyilik = iyilikHavuzu[(d.getDate() + d.getMonth()) % iyilikHavuzu.length];
+            document.getElementById('iyilik-metin').innerText = iyilik.gorev;
+            document.getElementById('iyilik-kaynak').innerText = iyilik.kaynak;
+        } catch (e) { document.getElementById('ana-metin').innerText = "Veri bağlantısı kurulamadı."; }
+    }
+
     function tabDegistir(kat, el) {
-        aktifKategori = kat;
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         el.classList.add('active');
         document.getElementById('kat-etiket').innerText = "Günün " + kat.slice(0,-3);
-        rastgeleGetir();
+        rastgeleGetir(kat);
     }
 
-    function rastgeleGetir() {
-        const liste = veriler[aktifKategori];
-        if(!liste) return;
-        const secilen = liste[Math.floor(Math.random() * liste.length)];
-        document.getElementById('ana-metin').innerText = secilen.metin || secilen.bilgi;
-        document.getElementById('kaynak').innerText = secilen.kaynak || secilen.isim || "";
+    function rastgeleGetir(kat) {
+        const l = veriler[kat]; 
+        if(!l) return;
+        const s = l[Math.floor(Math.random()*l.length)];
+        document.getElementById('ana-metin').innerText = s.metin || s.bilgi;
+        document.getElementById('kaynak').innerText = s.kaynak || s.isim || "";
     }
 
-    function paylas() {
-        const metin = document.getElementById('ana-metin').innerText;
-        const kaynak = document.getElementById('kaynak').innerText;
-        const url = window.location.href;
-        const shareText = `"${metin}"\n\nKaynak: ${kaynak}\n\nİlim Köşesi'nden daha fazlası için: ${url}`;
-
-        if (navigator.share) {
-            navigator.share({ title: 'Günün Bilgisi', text: shareText });
-        } else {
-            const tempInput = document.createElement("textarea");
-            tempInput.value = shareText;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            alert("Metin kopyalandı! İstediğiniz yerde paylaşabilirsiniz.");
-        }
-    }
-
-    vakitCek();
+    vakitCek(); 
     verileriGetir();
 </script>
-
 </body>
 </html>
